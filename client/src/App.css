@@ -1,0 +1,35 @@
+.schema-page {
+  width: min(100% - 2rem, 640px);
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.schema-page h1 {
+  margin-top: 0;
+}
+
+.schema-page form {
+  display: grid;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.schema-page input,
+.schema-page button {
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+}
+
+.schema-page button {
+  color: white;
+  background: var(--accent);
+  border-color: var(--accent);
+  cursor: pointer;
+}
+
+.schema-page button:hover {
+  opacity: 0.9;
+}
