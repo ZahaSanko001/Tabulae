@@ -1,30 +1,50 @@
+/* App.css */
 .schema-page {
   width: min(100% - 2rem, 640px);
   margin: 0 auto;
   padding: 4rem 0;
+  text-align: left;
 }
 
 .schema-page h1 {
   margin-top: 0;
+  font-size: 28px;
+}
+
+.schema-page .subtitle {
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 2rem;
 }
 
 .schema-page form {
   display: grid;
   gap: 0.75rem;
-  text-align: left;
 }
 
 .schema-page input,
+.schema-page select,
 .schema-page button {
   box-sizing: border-box;
   font: inherit;
+  font-size: 14px;
   padding: 0.7rem 0.8rem;
   border: 1px solid var(--border);
   border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--text-h);
+}
+
+.schema-page input:focus,
+.schema-page select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
 }
 
 .schema-page button {
-  color: white;
+  color: #0B1120;
+  font-weight: 600;
   background: var(--accent);
   border-color: var(--accent);
   cursor: pointer;
@@ -32,4 +52,17 @@
 
 .schema-page button:hover {
   opacity: 0.9;
+}
+
+.schema-page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Canvas view breaks out of the centered layout entirely */
+.schema-canvas {
+  flex: 1;
+  width: 100%;
+  height: 100svh;
+  text-align: left;
 }
