@@ -13,8 +13,10 @@ export interface TableNode {
 }
 
 export interface ForeignKeyEdge {
+  fromSchema: string;
   fromTable: string;
   fromColumn: string;
+  toSchema: string;
   toTable: string;
   toColumn: string;
 }

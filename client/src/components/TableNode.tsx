@@ -1,10 +1,8 @@
 // client/src/components/TableNode.tsx
-import { useState } from "react";
 import { Handle, Position } from "reactflow";
 import type { TableNode as TableNodeType } from "../types/schema";
 
 export function TableNodeComponent({ data }: { data: TableNodeType & { expanded: boolean; onToggle: () => void } }) {
-  const [expanded, setExpanded] = useState(false);
   const pkColumns = data.columns.filter((c) => c.isPrimaryKey);
   const visibleColumns = data.expanded ? data.columns : pkColumns;
 
@@ -32,7 +30,7 @@ export function TableNodeComponent({ data }: { data: TableNodeType & { expanded:
             <span className="text-[#475569]">{col.dataType}</span>
           </div>
         ))}
-        {!expanded && data.columns.length > pkColumns.length && (
+        {!data.expanded && data.columns.length > pkColumns.length && (
           <div className="px-2.5 py-1 text-[#475569] text-[10px]">
             +{data.columns.length - pkColumns.length} more…
           </div>

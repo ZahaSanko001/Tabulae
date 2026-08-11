@@ -105,8 +105,10 @@ export class SqlServerSchemaProvider implements ISchemaProvider {
 
       const relationships: ForeignKeyEdge[] = foreignKeysResult.recordset.map(
         (row) => ({
+          fromSchema: row.from_schema,
           fromTable: row.from_table,
           fromColumn: row.from_column,
+          toSchema: row.to_schema,
           toTable: row.to_table,
           toColumn: row.to_column,
         }),

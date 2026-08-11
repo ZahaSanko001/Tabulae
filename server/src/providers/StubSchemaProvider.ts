@@ -31,8 +31,9 @@ export class StubSchemaProvider implements ISchemaProvider {
         }
       ],
       relationships: [
-        { fromTable: "Orders", 
+        { fromSchema: "dbo", fromTable: "Orders", 
           fromColumn: "UserId", 
+          toSchema: "dbo",
           toTable: "Users", 
           toColumn: "Id" 
         }
