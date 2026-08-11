@@ -16,3 +16,25 @@ export function buildAdjacency(snapshot: SchemaSnapshot): Map<string, Set<string
 
   return adjacency;
 }
+
+
+export function getSubgraph(adjacency: Map<string, Set<string>>, rootId: string, hops: number): Set<string> {
+  const visited = new Set<string>([rootId]);
+  let frontier = new Set<string>([rootId]);
+
+  for (let i = 0; i < hops; i++) {
+    const next = new Set<string>();
+    for (const id of frontier) {
+      for (const neighbor of adjacency.get(id) ?? []) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          next.add(neighbor);
+        }
+      }
+    }
+    frontier = next;
+    if (frontier.size === 0) break;
+  }
+
+  return visited;
+}
