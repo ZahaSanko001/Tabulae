@@ -2,15 +2,16 @@
 import { Handle, Position } from "reactflow";
 import type { TableNode as TableNodeType } from "../types/schema";
 
-export function TableNodeComponent({ data }: { data: TableNodeType & { expanded: boolean; onToggle: () => void } }) {
+export function TableNodeComponent({ data }: { data: TableNodeType & { expanded: boolean; onToggle: () => void; dimmed?: boolean } }) {
   const pkColumns = data.columns.filter((c) => c.isPrimaryKey);
   const visibleColumns = data.expanded ? data.columns : pkColumns;
 
   return (
     <div
-      className="rounded-md bg-[#111827] text-[#E2E8F0] text-xs shadow-lg min-w-50 font-mono
+      className={`rounded-md bg-[#111827] text-[#E2E8F0] text-xs shadow-lg min-w-50 font-mono
                  border border-[#1E293B] border-l-[3px] border-l-amber-500 cursor-pointer
-                 hover:border-l-amber-400 transition-colors"
+                 hover:border-l-amber-400 transition-all duration-150
+                 ${data.dimmed ? "opacity-25" : "opacity-100"}`}
       onClick={data.onToggle}
     >
       <div className="px-2.5 py-1.5 font-semibold text-[#F1F5F9] flex items-center justify-between">
