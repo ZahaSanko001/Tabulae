@@ -92,6 +92,9 @@
 
 .schema-canvas__toolbar {
   position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   z-index: 5;
   top: 12px;
   right: 12px;
@@ -111,6 +114,47 @@
   color: #fff;
   background: #1e293b;
   opacity: 1;
+}
+
+.schema-export-menu {
+  position: relative;
+}
+
+.schema-page .schema-export-menu__toggle {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #475569;
+  border-radius: 5px;
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.92);
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.schema-page .schema-export-menu__toggle:hover {
+  color: #fff;
+  background: #1e293b;
+  opacity: 1;
+}
+
+.schema-export-menu__items {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 88px;
+  padding: 6px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.96);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.35);
+}
+
+.schema-export-menu__items button {
+  width: 100%;
 }
 
 .schema-canvas .react-flow__controls {

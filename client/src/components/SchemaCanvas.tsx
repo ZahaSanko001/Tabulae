@@ -118,6 +118,7 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
         >
           {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
         </button>
+        <ExportToolbar nodes={nodes} snapshot={snapshot} />
       </div>
       <SearchPanel
         tableOptions={tableOptions}
@@ -128,11 +129,11 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
         hopDepth={hopDepth}
         onHopDepthChange={setHopDepth}
       />
-      <ExportToolbar nodes={nodes} snapshot={snapshot} />
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
+        proOptions={{ hideAttribution: true }}
         onNodeMouseEnter={(_, node) => setHoveredId(node.id)}
         onNodeMouseLeave={() => setHoveredId(null)}
         onInit={(instance) => instance.fitView()}

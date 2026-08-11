@@ -55,7 +55,7 @@ export function SearchPanel({
               <button
                 key={n}
                 onClick={() => onHopDepthChange(n)}
-                className={`w-5 h-5 rounded ${n === hopDepth ? "bg-amber-500 text-[#0B1120]" : "bg-[#1E293B]"}`}
+                className={`w-5 h-5 rounded flex items-center justify-center ${n === hopDepth ? "bg-amber-500 text-[#0B1120]" : "bg-[#1E293B]"}`}
               >
                 {n}
               </button>
