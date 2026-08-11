@@ -7,6 +7,7 @@ import { layoutGraph, type LayoutAnchor } from "../utils/layout";
 import { buildAdjacency, getSubgraph } from "../utils/adjacency";
 import { TableNodeComponent } from "./TableNode";
 import { SearchPanel } from "./SearchPanel";
+import { ExportToolbar } from "./ExportToolbar";
 
 const nodeTypes = { tableNode: TableNodeComponent };
 
@@ -127,6 +128,7 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
         hopDepth={hopDepth}
         onHopDepthChange={setHopDepth}
       />
+      <ExportToolbar nodes={nodes} snapshot={snapshot} />
       <ReactFlow
         nodes={nodes}
         edges={edges}
