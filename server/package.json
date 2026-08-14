@@ -1,11 +1,14 @@
 {
-  "name": "tabulae",
-  "version": "1.0.0",
+  "name": "@raiyankarim/tabulae",
+  "version": "0.1.0",
   "bin": {
-    "tabulae": "./dist/index.js"
+    "tabulae": "dist/index.js"
   },
-  "files": ["dist", "public"],
-  "description": "",
+  "files": [
+    "dist",
+    "public"
+  ],
+  "description": "A tool for visualizing database schemas and relationships",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -13,7 +16,25 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/index.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "db",
+    "sql",
+    "postgresql",
+    "mssql",
+    "schema",
+    "table",
+    "column",
+    "relationship",
+    "diagram",
+    "visualization",
+    "database",
+    "tool",
+    "tabulae"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZahaSanko001/Tabulae.git"
+  },
   "author": "",
   "license": "ISC",
   "type": "commonjs",

@@ -21,7 +21,7 @@ app.get(/^(?!\/api).*/, (_req, res) => {
 const PORT = 3000;
 app.listen(PORT, "127.0.0.1", () => {
     const url = `http://localhost:${PORT}`;
-    console.log(`Schema Visualizer running at ${url}`);
+    console.log(`Tabulae running at ${url}`);
     (0, open_1.default)(url).catch(() => {
         console.log("Couldn't open your browser automatically — visit the URL above.");
     });

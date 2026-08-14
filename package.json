@@ -2,7 +2,7 @@
   "name": "tabulae",
   "private": true,
   "scripts": {
-    "build": "npm run build --workspace=client && shx rm -rf server/public && shx cp -r client/dist server/public",
+    "build": "npm run build --workspace=server && npm run build --workspace=client && shx rm -rf server/public && shx cp -r client/dist server/public",
     "prepublishOnly": "npm run build"
   },
   "workspaces": [
