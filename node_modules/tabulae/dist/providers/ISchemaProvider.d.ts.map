@@ -1,0 +1,1 @@
+{"version":3,"file":"ISchemaProvider.d.ts","sourceRoot":"","sources":["../../src/providers/ISchemaProvider.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAC;AAElD,MAAM,WAAW,eAAe;IAC9B,SAAS,CAAC,gBAAgB,EAAE,MAAM,GAAG,OAAO,CAAC,cAAc,CAAC,CAAC;CAC9D"}

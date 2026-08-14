@@ -1,0 +1,15 @@
+{
+  "name": "tabulae",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --workspace=client && shx rm -rf server/public && shx cp -r client/dist server/public",
+    "prepublishOnly": "npm run build"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "shx": "^0.4.0"
+  }
+}
