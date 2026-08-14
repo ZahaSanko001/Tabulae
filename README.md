@@ -89,15 +89,15 @@ The SQL Server provider reads user tables from `INFORMATION_SCHEMA` and `sys` ca
 
 ### Empty state
 
-`docs/screenshots/01-empty-state.png`
+![Tabulae empty state](./docs/screenshots/01-empty-state.png)
 
 ### Schema overview
 
-`docs/screenshots/02-schema-overview.png`
+![Tabulae schema overview](./docs/screenshots/02-schema-overview.png)
 
 ### Search and focus mode
 
-`docs/screenshots/03-search-and-focus.png`
+![Tabulae search and focus mode](./docs/screenshots/03-search-and-focus.png)
 
 ## API
 
@@ -225,4 +225,5 @@ The npm package currently declares the ISC license. See [`server/package.json`](
 ## Repository
 
 [GitHub: ZahaSanko001/Tabulae](https://github.com/ZahaSanko001/Tabulae)
+
 
