@@ -212,11 +212,9 @@ docker compose down -v
 
 ## Security notes
 
-- Treat database connection strings as secrets when they contain passwords or tokens.
-- Use a least-privileged database account for introspection.
-- Keep Tabulae bound to localhost unless you have secured the API and deployment environment.
+- Keep Tabulae bound to localhost, do not deploy it(recommended).
 - The PostgreSQL connection is configured with `default_transaction_read_only=on`; the provider only runs metadata queries.
-- Review your SQL Server permissions and network exposure separately before using it against production data.
+- Review your SQL Server permissions and network exposure separately before using it against production data(again recommended to not deploy the api unless it is by design for your project).
 
 ## License
 
