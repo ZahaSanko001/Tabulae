@@ -1,1 +1,1 @@
-{"version":3,"file":"ProviderFactory.d.ts","sourceRoot":"","sources":["../../src/providers/ProviderFactory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAC;AAIpD,MAAM,MAAM,MAAM,GAAG,UAAU,GAAG,WAAW,CAAC;AAE9C,wBAAgB,WAAW,CAAC,MAAM,EAAE,MAAM,GAAG,eAAe,CAM3D"}
+{"version":3,"file":"ProviderFactory.d.ts","sourceRoot":"","sources":["../../src/providers/ProviderFactory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAC;AAKpD,MAAM,MAAM,MAAM,GAAG,UAAU,GAAG,WAAW,GAAG,OAAO,CAAC;AAExD,wBAAgB,WAAW,CAAC,MAAM,EAAE,MAAM,GAAG,eAAe,CAO3D"}

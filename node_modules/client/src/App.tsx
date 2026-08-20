@@ -4,7 +4,7 @@ import { SchemaCanvas } from './components/SchemaCanvas'
 import { useIntrospectSchema } from './hooks/useIntrospectSchema'
 import './App.css'
 
-type DbType = 'postgres' | 'sqlserver'
+type DbType = 'postgres' | 'sqlserver' | 'mysql'
 
 function App() {
   const [connectionString, setConnectionString] = useState('')
@@ -15,6 +15,12 @@ function App() {
     event.preventDefault()
     await introspect(dbType, connectionString)
   }
+
+/*   const placeholders: Record<string, string> = {
+    postgres: "postgresql://user:password@localhost:5432/dbname",
+    mysql: "mysql://user:password@localhost:3306/dbname",
+    sqlserver: "Server=localhost;Database=dbname;User Id=user;Password=password;",
+  }; */
 
   return (
     <main className="schema-page">
@@ -36,6 +42,7 @@ function App() {
         >
           <option value="postgres">PostgreSQL</option>
           <option value="sqlserver">SQL Server</option>
+          <option value="mysql">MySQL</option>
         </select>
         <button type="submit" disabled={loading}>
           {loading ? 'Connecting…' : 'Visualize schema'}

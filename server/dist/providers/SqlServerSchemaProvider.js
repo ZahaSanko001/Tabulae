@@ -1,10 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SqlServerSchemaProvider = void 0;
-const sql = require("mssql");
+const mssql_1 = __importDefault(require("mssql"));
 class SqlServerSchemaProvider {
     async getSchema(connectionString) {
-        const pool = await new sql.ConnectionPool(connectionString).connect();
+        const pool = await new mssql_1.default.ConnectionPool(connectionString).connect();
         try {
             const columnsResult = await pool.request().query(`
         SELECT

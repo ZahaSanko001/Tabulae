@@ -5,7 +5,7 @@ Tabulae is a database schema visualization tool. Connect it to a PostgreSQL or S
 The application includes:
 
 - An interactive React and React Flow schema canvas
-- PostgreSQL and SQL Server schema introspection
+- PostgreSQL, MySQL, and SQL Server schema introspection
 - Automatic table layout with relationship edges
 - Table search and relationship-neighborhood focus
 - Expandable table nodes
@@ -85,6 +85,22 @@ Server=localhost,1433;Database=demo;User Id=sa;Password=YourStrongPassword123!;T
 
 The SQL Server provider reads user tables from `INFORMATION_SCHEMA` and `sys` catalog views, identifies primary keys and foreign keys, and excludes system tables.
 
+### MySQL
+
+Use a standard MySQL connection URI:
+
+```text
+mysql://USER:PASSWORD@HOST:3306/DATABASE
+```
+
+Example for the included Docker database:
+
+```text
+mysql://root:mysql@localhost:3306/demo
+```
+
+The MySQL provider reads the active database from `information_schema`, including primary keys, foreign keys, and relationship schemas.
+
 ## Screenshots
 
 ### Empty state
@@ -163,7 +179,7 @@ The endpoint is intended for local use. Do not expose it publicly without adding
 
 ## Optional local databases with Docker
 
-The repository includes PostgreSQL and SQL Server services in `docker-compose.yaml`:
+The repository includes PostgreSQL, MySQL, and SQL Server services in `docker-compose.yaml`:
 
 ```bash
 docker compose up -d
@@ -174,9 +190,10 @@ The default development values are:
 | Database | Host | Port | Database | User | Password |
 | --- | --- | ---: | --- | --- | --- |
 | PostgreSQL | `localhost` | `5432` | `demo` | `postgres` | `postgres` |
+| MySQL | `localhost` | `3306` | `demo` | `root` | `mysql` |
 | SQL Server | `localhost` | `1433` | `demo` | `sa` | `YourStrongPassword123!` |
 
-The matching connection strings are shown above and are also available in [`server.rest`](./server.rest). The SQL Server image may take a little longer to become ready after the container starts.
+The matching connection strings are shown above and are also available in [`server.rest`](./server.rest). The database containers may take a little longer to become ready after they start. The MySQL init script creates `users` and `orders` tables with a foreign key for testing.
 
 Stop the services with:
 
