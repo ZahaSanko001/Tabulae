@@ -4,13 +4,12 @@ Tabulae is a database schema visualization tool. Connect it to a PostgreSQL, MyS
 
 The application includes:
 
-- An interactive React and React Flow schema canvas
+- An interactive React Flow schema canvas
 - PostgreSQL, MySQL, and SQL Server schema introspection
 - SQLite database-file introspection
 - Automatic table layout with relationship edges
 - Table search and relationship-neighborhood focus
 - Expandable table nodes
-- Fullscreen canvas mode
 - PNG, SVG, and Mermaid export
 - A local Express API and a packaged command-line application
 
