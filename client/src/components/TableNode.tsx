@@ -8,31 +8,31 @@ export function TableNodeComponent({ data }: { data: TableNodeType & { expanded:
 
   return (
     <div
-      className={`rounded-md bg-[#111827] text-[#E2E8F0] text-xs shadow-lg min-w-50 font-mono
-                 border border-[#1E293B] border-l-[3px] border-l-amber-500 cursor-pointer
-                 hover:border-l-amber-400 transition-all duration-150
+      className={`rounded-md bg-(--surface) text-(--text-h) text-xs shadow-lg min-w-50 font-mono
+                 border border-(--border) border-l-[3px] border-l-(--accent) cursor-pointer
+                 hover:border-l-(--secondary) transition-all duration-150
                  ${data.dimmed ? "opacity-25" : "opacity-100"}`}
       onClick={data.onToggle}
     >
-      <div className="px-2.5 py-1.5 font-semibold text-[#F1F5F9] flex items-center justify-between">
+      <div className="px-2.5 py-1.5 font-semibold text-(--text-h) flex items-center justify-between">
         <span>{data.name}</span>
-        <span className="text-[#475569] text-[10px]">{data.columns.length}</span>
+        <span className="text-(--text) text-[10px]">{data.columns.length}</span>
       </div>
-      <div className="border-t border-[#1E293B]">
+      <div className="border-t border-(--border)">
         {visibleColumns.map((col) => (
           <div
             key={col.name}
-            className="flex justify-between px-2.5 py-1 border-b border-[#1E293B]/60 last:border-0"
+            className="flex justify-between px-2.5 py-1 border-b border-(--border)/60 last:border-0"
           >
-            <span className={col.isPrimaryKey ? "text-amber-400" : col.isForeignKey ? "text-sky-400" : "text-[#94A3B8]"}>
+            <span className={col.isPrimaryKey ? "text-(--accent)" : col.isForeignKey ? "text-(--secondary)" : "text-(--text)"}>
               {col.isPrimaryKey ? "● " : col.isForeignKey ? "↳ " : ""}
               {col.name}
             </span>
-            <span className="text-[#475569]">{col.dataType}</span>
+            <span className="text-(--text) opacity-70">{col.dataType}</span>
           </div>
         ))}
         {!data.expanded && data.columns.length > pkColumns.length && (
-          <div className="px-2.5 py-1 text-[#475569] text-[10px]">
+          <div className="px-2.5 py-1 text-(--text) opacity-70 text-[10px]">
             +{data.columns.length - pkColumns.length} more…
           </div>
         )}

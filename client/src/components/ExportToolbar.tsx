@@ -19,8 +19,7 @@ export function ExportToolbar({ nodes, snapshot }: { nodes: Node[]; snapshot: Sc
     }
   };
 
-  const btnClass =
-    "px-2.5 py-1.5 rounded bg-[#111827] border border-[#1E293B] text-[#94A3B8] hover:text-amber-400 hover:border-amber-500 transition-colors disabled:opacity-40 disabled:cursor-wait";
+  const btnClass = "px-2.5 py-1.5 rounded bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors disabled:opacity-40 disabled:cursor-wait";
 
   return (
     <div className="schema-export-menu">

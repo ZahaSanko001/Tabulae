@@ -1,3 +1,4 @@
+// client/src/components/SearchPanel.tsx
 import { useMemo } from "react";
 
 interface TableOption {
@@ -25,21 +26,24 @@ export function SearchPanel({
   }, [query, tableOptions]);
 
   return (
-    <div className="absolute top-4 left-4 z-10 w-72 bg-[#111827] border border-[#1E293B] rounded-md shadow-lg font-mono text-xs">
-      <input
-        value={query}
-        onChange={(e) => onQueryChange(e.target.value)}
-        placeholder="Search tables…"
-        className="w-full bg-[#0B1120] border-b border-[#1E293B] rounded-t-md px-2.5 py-2 text-[#E2E8F0] outline-none focus:border-amber-500"
-      />
+    <div className="absolute top-4 left-4 z-10 w-72 bg-(--surface) border border-(--border) rounded-md shadow-lg font-mono text-xs">
+      <div className="flex items-center border-b border-(--border) rounded-t-md bg-(--bg) px-2.5">
+        <span className="text-(--accent) font-semibold mr-1.5">&gt;</span>
+        <input
+          value={query}
+          onChange={(e) => onQueryChange(e.target.value)}
+          placeholder="Search tables…"
+          className="w-full bg-transparent py-2 text-(--text-h) outline-none"
+        />
+      </div>
       {matches.length > 0 && (
         <div className="max-h-48 overflow-y-auto">
           {matches.map((m) => (
             <button
               key={m.id}
               onClick={() => onFocus(m.id)}
-              className={`w-full text-left px-2.5 py-1.5 hover:bg-[#1E293B] transition-colors ${
-                focusedId === m.id ? "text-amber-400" : "text-[#94A3B8]"
+              className={`w-full text-left px-2.5 py-1.5 hover:bg-(--border) transition-colors ${
+                focusedId === m.id ? "text-(--accent)" : "text-(--text)"
               }`}
             >
               {m.label}
@@ -48,14 +52,16 @@ export function SearchPanel({
         </div>
       )}
       {focusedId && (
-        <div className="border-t border-[#1E293B] p-2 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[#94A3B8]">
+        <div className="border-t border-(--border) p-2 flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-(--text)">
             <span>Depth</span>
             {[1, 2, 3].map((n) => (
               <button
                 key={n}
                 onClick={() => onHopDepthChange(n)}
-                className={`w-5 h-5 rounded flex items-center justify-center ${n === hopDepth ? "bg-amber-500 text-[#0B1120]" : "bg-[#1E293B]"}`}
+                className={`w-5 h-5 rounded flex items-center justify-center ${
+                  n === hopDepth ? "bg-(--accent) text-[#0B1120]" : "bg-(--border)"
+                }`}
               >
                 {n}
               </button>

@@ -1,3 +1,4 @@
+// client/src/components/SchemaCanvas.tsx
 import { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import ReactFlow, { Background, BackgroundVariant, Controls, MiniMap, MarkerType } from "reactflow";
 import "reactflow/dist/style.css";
@@ -41,13 +42,12 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
 
   const handleFocus = useCallback((id: string | null) => {
     setFocusedId(id);
-    setLayoutAnchor(undefined); // full re-layout when the visible node set changes
+    setLayoutAnchor(undefined);
   }, []);
 
   const { nodes, edges } = useMemo(() => {
     const { nodes: rawNodes, edges: rawEdges } = toFlowGraph(snapshot);
 
-    // Focus mode actually removes nodes/edges outside the subgraph
     const allowedIds = focusedId ? getSubgraph(adjacency, focusedId, hopDepth) : null;
     const filteredNodes = allowedIds ? rawNodes.filter((n) => allowedIds.has(n.id)) : rawNodes;
     const filteredEdges = allowedIds
@@ -93,14 +93,12 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
     const handleFullscreenChange = () => {
       setIsFullscreen(document.fullscreenElement === canvasRef.current);
     };
-
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
   const toggleFullscreen = async () => {
     if (!canvasRef.current) return;
-
     if (document.fullscreenElement === canvasRef.current) {
       await document.exitFullscreen();
     } else {
@@ -109,40 +107,51 @@ export function SchemaCanvas({ snapshot }: { snapshot: SchemaSnapshot }) {
   };
 
   return (
-    <div ref={canvasRef} className="schema-canvas relative">
-      <div className="schema-canvas__toolbar">
-        <button
-          type="button"
-          className="schema-canvas__fullscreen-button"
-          onClick={() => void toggleFullscreen()}
-        >
-          {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
-        </button>
-        <ExportToolbar nodes={nodes} snapshot={snapshot} />
+    <div ref={canvasRef} className="terminal-window schema-canvas-window">
+      <div className="terminal-window__titlebar">
+        <span className="terminal-window__dot terminal-window__dot--red" />
+        <span className="terminal-window__dot terminal-window__dot--amber" />
+        <span className="terminal-window__dot terminal-window__dot--green" />
+        <span className="terminal-window__title">
+          tabulae — {snapshot.tables.length} table{snapshot.tables.length === 1 ? "" : "s"}
+        </span>
+        <div className="terminal-window__titlebar-controls">
+          <button
+            type="button"
+            className="schema-canvas__fullscreen-button"
+            onClick={() => void toggleFullscreen()}
+          >
+            {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+          </button>
+          <ExportToolbar nodes={nodes} snapshot={snapshot} />
+        </div>
       </div>
-      <SearchPanel
-        tableOptions={tableOptions}
-        query={query}
-        onQueryChange={setQuery}
-        focusedId={focusedId}
-        onFocus={handleFocus}
-        hopDepth={hopDepth}
-        onHopDepthChange={setHopDepth}
-      />
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={nodeTypes}
-        proOptions={{ hideAttribution: true }}
-        onNodeMouseEnter={(_, node) => setHoveredId(node.id)}
-        onNodeMouseLeave={() => setHoveredId(null)}
-        onInit={(instance) => instance.fitView()}
-        fitView
-      >
-        <Background color="#1E293B" gap={24} size={1} variant={BackgroundVariant.Dots} />
-        <Controls />
-        <MiniMap pannable zoomable />
-      </ReactFlow>
+
+      <div className="terminal-window__canvas-body relative">
+        <SearchPanel
+          tableOptions={tableOptions}
+          query={query}
+          onQueryChange={setQuery}
+          focusedId={focusedId}
+          onFocus={handleFocus}
+          hopDepth={hopDepth}
+          onHopDepthChange={setHopDepth}
+        />
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          proOptions={{ hideAttribution: true }}
+          onNodeMouseEnter={(_, node) => setHoveredId(node.id)}
+          onNodeMouseLeave={() => setHoveredId(null)}
+          onInit={(instance) => instance.fitView()}
+          fitView
+        >
+          <Background color="#1E293B" gap={24} size={1} variant={BackgroundVariant.Dots} />
+          <Controls />
+          <MiniMap pannable zoomable />
+        </ReactFlow>
+      </div>
     </div>
   );
 }
