@@ -1,11 +1,12 @@
 ﻿# Tabulae
 
-Tabulae is a database schema visualization tool. Connect it to a PostgreSQL or SQL Server database and explore its tables, columns, primary keys, foreign keys, and relationships as an interactive diagram.
+Tabulae is a database schema visualization tool. Connect it to a PostgreSQL, MySQL, SQLite, or SQL Server database and explore its tables, columns, primary keys, foreign keys, and relationships as an interactive diagram.
 
 The application includes:
 
 - An interactive React and React Flow schema canvas
 - PostgreSQL, MySQL, and SQL Server schema introspection
+- SQLite database-file introspection
 - Automatic table layout with relationship edges
 - Table search and relationship-neighborhood focus
 - Expandable table nodes
@@ -101,6 +102,16 @@ mysql://root:mysql@localhost:3306/demo
 
 The MySQL provider reads the active database from `information_schema`, including primary keys, foreign keys, and relationship schemas.
 
+### SQLite
+
+Use the path to a SQLite database file as the connection string. For example:
+
+```text
+C:\path\to\demo.sqlite
+```
+
+The SQLite provider reads user tables from `sqlite_master`, including primary keys, foreign keys, and relationships.
+
 ## Screenshots
 
 ### Empty state
@@ -133,7 +144,7 @@ Request body:
 }
 ```
 
-For SQL Server, use `"dbType": "sqlserver"`.
+For SQLite, use `"dbType": "sqlite"` and pass the database file path.
 
 A successful response has this shape:
 
@@ -167,15 +178,7 @@ A successful response has this shape:
 }
 ```
 
-Connection or provider errors are returned as HTTP 400 responses:
-
-```json
-{
-  "error": "Error message"
-}
-```
-
-The endpoint is intended for local use. Do not expose it publicly without adding authentication, authorization, rate limiting, and appropriate protection for database credentials.
+The endpoint is intended for local use. Do not expose it, keep the protection of database credentials in mind.
 
 ## Optional local databases with Docker
 

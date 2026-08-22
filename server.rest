@@ -26,3 +26,12 @@ Content-Type: application/json
   "dbType": "mysql",
   "connectionString": "mysql://root:mysql@localhost:3306/demo"
 }
+
+### SQLite schema introspection
+POST {{baseUrl}}/api/schema/introspect
+Content-Type: application/json
+
+{
+  "dbType": "sqlite",
+  "connectionString": "C:\\path\\to\\demo.sqlite"
+}

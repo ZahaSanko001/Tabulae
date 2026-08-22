@@ -32,4 +32,5 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+\.tmp/
 *.sw?
