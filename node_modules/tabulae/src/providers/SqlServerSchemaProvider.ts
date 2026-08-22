@@ -1,4 +1,4 @@
-import sql = require("mssql");
+import sql from "mssql";
 import type { ISchemaProvider } from "./ISchemaProvider";
 import type {
   ColumnInfo,
